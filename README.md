@@ -18,5 +18,5 @@ restart server by pm2:
   pm2 restart all
 #
 visit:  
-  http://localhos:8882/swagger-ui/index.html  
-  http://localhos:8882/swagger-editor/index.html
+  http://localhost:8882/swagger-ui/index.html  
+  http://localhost:8882/swagger-editor/index.html
