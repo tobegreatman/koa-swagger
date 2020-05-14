@@ -14,9 +14,7 @@ init:
 start server:  
   npm run start  
   
-(  or start server by:  
-  node app.js  
-)  
+(  or start server by: node app.js )  
   
 restart server by pm2:  
   pm2 restart all
