@@ -32,7 +32,7 @@ app.use(convert(staticCache(path.join(__dirname, './'), {
 })))
 
 // 服务端口
-const port = 8882
+const port = 8080
 
 // 启动程序，监听端口
 app.listen(port, () => {
