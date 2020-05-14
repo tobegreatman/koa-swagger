@@ -1,5 +1,6 @@
 # koa-swagger
-Swagger2 editor and view UI with koa server
+Swagger2 editor and view UI with koa server  
+
 #
 Rely on: node、pm2  (pm2 not necessary)
 
@@ -9,15 +10,17 @@ Rely on: node、pm2  (pm2 not necessary)
 #
 Init:  
   npm install  
-  npm run build
+  npm run build  
+
 #
 Start server:  
   npm run start  
   
 (  or start server by: node app.js )  
-  
+
 Restart server by pm2:  
-  pm2 restart all
+  pm2 restart all  
+
 #
 Visit links:  
   http://localhost:8080/swagger-ui/index.html  
