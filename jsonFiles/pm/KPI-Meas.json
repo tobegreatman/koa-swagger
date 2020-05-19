@@ -1,0 +1,183 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "测量维护",
+    "description": "测量维护 接口文档整理",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "tags": [{
+    "name": "测量维护",
+    "description": ""
+  }],
+  "paths": {
+    "/pm/customizemg/goCustomizeMgmtPage.action": {
+      "get": {
+        "tags": [
+          "测量维护"
+        ],
+        "summary": "测量维护页面",
+        "parameters": [{
+          "name": "omcVersion",
+          "in": "query",
+          "description": "omc 版本",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "menu_id",
+          "in": "query",
+          "description": "菜单对应的 id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/customizemg/getCustomizeListPageData.action": {
+      "post": {
+        "tags": [
+          "测量维护"
+        ],
+        "summary": "测量维护表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "searchText": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "cellId": {
+                        "type": "string"
+                      },
+                      "dual_carrier_type": {
+                        "type": "number"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "needReboot": {
+                        "type": "number"
+                      },
+                      "product": {
+                        "type": "string"
+                      },
+                      "product_re_type_regx": {
+                        "type": "string"
+                      },
+                      "reportPeriod": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      },
+                      "startTime": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "updateTime": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/customizemg/setSingleEnbReportKPISwitch.action": {
+      "post": {
+        "tags": [
+          "测量维护"
+        ],
+        "summary": "表格-操作-开启/关闭测量任务",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "smallCellCode": {
+                "type": "string"
+              },
+              "activeReport": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

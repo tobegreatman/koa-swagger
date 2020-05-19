@@ -1,0 +1,1963 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "性能查询",
+    "description": "性能查询 接口文档整理",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "tags": [{
+    "name": "性能查询",
+    "description": ""
+  }],
+  "paths": {
+    "/cell/perfmgmt/goPerfStatisQuery.action": {
+      "get": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "性能查询页面",
+        "parameters": [{
+          "name": "omcVersion",
+          "in": "query",
+          "description": "omc 版本",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "menu_id",
+          "in": "query",
+          "description": "菜单对应的 id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/getTemplateRelIndicators.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "模板对应右侧表格-表格字段显示",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "isCounter": {
+                    "type": "string"
+                  },
+                  "kpiId": {
+                    "type": "string"
+                  },
+                  "kpiName": {
+                    "type": "string"
+                  },
+                  "unit": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getTemplateDataPage.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "模板对应右侧表格数据加载",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "serialNumber": {
+                "type": "string"
+              },
+              "hostName": {
+                "type": "string"
+              },
+              "groupId": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "startTime": {
+                "type": "string"
+              },
+              "endTime": {
+                "type": "string"
+              },
+              "reportPeriod": {
+                "type": "number"
+              },
+              "operatorCode": {
+                "type": "number"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "K900000001": {
+                        "type": "string"
+                      },
+                      "K900000002": {
+                        "type": "string"
+                      },
+                      "K900000004": {
+                        "type": "string"
+                      },
+                      "K900000009": {
+                        "type": "string"
+                      },
+                      "K900000012": {
+                        "type": "number"
+                      },
+                      "K900000013": {
+                        "type": "number"
+                      },
+                      "cellId": {
+                        "type": "string"
+                      },
+                      "endTime": {
+                        "type": "string"
+                      },
+                      "groupId": {
+                        "type": "string"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "group_id": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      },
+                      "startTime": {
+                        "type": "string"
+                      },
+                      "timeLevel": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/viewStatisDetail.action": {
+      "get": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "模板对应右侧表格-字段点击加载页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/getKPIDrillDataList.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "模板对应右侧表格-字段点击-页面数据",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "startTime": {
+                "type": "string"
+              },
+              "endTime": {
+                "type": "string"
+              },
+              "kpiId": {
+                "type": "string"
+              },
+              "tempId": {
+                "type": "string"
+              },
+              "smallCellCode": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "counterDetail": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "formula": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "timeLevel": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getTemplateListPageData.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "查询模板 - 表格数据",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "searchText": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "isAllOperator": {
+                        "type": "string"
+                      },
+                      "isCustomize": {
+                        "type": "string"
+                      },
+                      "is_default": {
+                        "type": "string"
+                      },
+                      "reportSwitch": {
+                        "type": "string"
+                      },
+                      "tempId": {
+                        "type": "string"
+                      },
+                      "tempName": {
+                        "type": "string"
+                      },
+                      "updateTime": {
+                        "type": "string"
+                      },
+                      "updater": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/viewTemplateChart.action": {
+      "get": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "图表页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/getDeviceGroupList.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "图表-筛选-设备选择列表",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "isShowAll": {
+                "type": "string"
+              },
+              "noKpiShowGroup": {
+                "type": "string"
+              },
+              "tempId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getChartCellsInfoData.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "图表-筛选-设备选择表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "enbLimitNum": {
+                "type": "string"
+              },
+              "enbCodeList": {
+                "type": "array",
+                "xml": {
+                  "name": "enbCodeList",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "cellId": {
+                    "type": "string"
+                  },
+                  "cellIp": {
+                    "type": "string"
+                  },
+                  "groupId": {
+                    "type": "number"
+                  },
+                  "hostName": {
+                    "type": "string"
+                  },
+                  "serialNumber": {
+                    "type": "string"
+                  },
+                  "smallCellCode": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getChartIndicatorsInfoData.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "图表-筛选-指标选择表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "kpiLimitNum": {
+                "type": "string"
+              },
+              "kpiIdList": {
+                "type": "array",
+                "xml": {
+                  "name": "kpiIdList",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "is_counter": {
+                    "type": "string"
+                  },
+                  "kpiId": {
+                    "type": "string"
+                  },
+                  "kpiName": {
+                    "type": "string"
+                  },
+                  "unit": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getChartDataList.action": {
+      "post": {
+        "tags": [
+          "性能查询"
+        ],
+        "summary": "图表-筛选-设备表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "timeRange": {
+                "type": "string"
+              },
+              "startTime": {
+                "type": "string"
+              },
+              "enbLimitNum": {
+                "type": "string"
+              },
+              "enbCodeList": {
+                "type": "array",
+                "xml": {
+                  "name": "enbCodeList",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              },
+              "kpiLimitNum": {
+                "type": "string"
+              },
+              "kpiIdList": {
+                "type": "array",
+                "xml": {
+                  "name": "kpiIdList",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "K900000077": {
+                    "type": "string"
+                  },
+                  "cellId": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "end_time": {
+                    "type": "string"
+                  },
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "groupName": {
+                    "type": "string"
+                  },
+                  "hostName": {
+                    "type": "string"
+                  },
+                  "serialNumber": {
+                    "type": "string"
+                  },
+                  "smallCellCode": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/kpitemp/goAddCustomQueryTemplatePage.action": {
+      "get": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/system/deviceGroup/getDeviceGroupForCombobox.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-设备组列表",
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "built_in": {
+                    "type": "number"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getTempDeviceGroupList.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-设备组列表",
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "group_name": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getEnbListPageData.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-设备表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "groupId": {
+                "type": "number"
+              },
+              "tempId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "connection_status": {
+                        "type": "string"
+                      },
+                      "dual_carrier_type": {
+                        "type": "number"
+                      },
+                      "groupId": {
+                        "type": "number"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getSelectedEnbListPageData.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-已选择设备表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "tempId": {
+                "type": "string"
+              },
+              "limitNum": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "cellId": {
+                        "type": "string"
+                      },
+                      "groupId": {
+                        "type": "number"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorGroupList.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-指标选择-下拉菜单",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "isShowAll": {
+                "type": "string"
+              },
+              "noKpiShowGroup": {
+                "type": "string"
+              },
+              "templd": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "catagoryId": {
+                    "type": "string"
+                  },
+                  "catagoryName": {
+                    "type": "string"
+                  },
+                  "indicator_count": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorListPageData.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-指标选择表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "catagoryId": {
+                "type": "string"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "tempId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "calculating_status": {
+                        "type": "string"
+                      },
+                      "catagoryId": {
+                        "type": "string"
+                      },
+                      "catagoryName": {
+                        "type": "string"
+                      },
+                      "custName": {
+                        "type": "string"
+                      },
+                      "isCustomize": {
+                        "type": "string"
+                      },
+                      "kpiId": {
+                        "type": "string"
+                      },
+                      "kpiName": {
+                        "type": "string"
+                      },
+                      "unit": {
+                        "type": "string"
+                      },
+                      "updateTime": {
+                        "type": "string"
+                      },
+                      "updater": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getSelectedIndicatorListPageData.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板-已选择指标表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "tempId": {
+                "type": "string"
+              },
+              "limitNum": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "catagoryId": {
+                        "type": "string"
+                      },
+                      "catagoryName": {
+                        "type": "string"
+                      },
+                      "kpiId": {
+                        "type": "string"
+                      },
+                      "kpiName": {
+                        "type": "string"
+                      },
+                      "statis_type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/addOrModifyTemplate.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "新建模板/修改模板 - 确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempName": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "reportPeriod": {
+                "type": "string"
+              },
+              "week": {
+                "type": "array",
+                "xml": {
+                  "name": "week",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              },
+              "hour": {
+                "type": "array",
+                "xml": {
+                  "name": "hour",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              },
+              "relKpi": {
+                "type": "array",
+                "xml": {
+                  "name": "relKpi",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "is_default": {
+                "type": "boolean"
+              },
+              "selDeviceType": {
+                "type": "number"
+              },
+              "relDevice": {
+                "type": "array",
+                "xml": {
+                  "name": "relDevice",
+                  "wrapped": true
+                },
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/goQueryTemplatePage.action": {
+      "get": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "查询模板页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/setDefaultTemplate.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-设为默认",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "is_default": {
+                "type": "boolean"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/queryTemplateInfo.action": {
+      "get": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-信息页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/getTemplateInfo.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-信息",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "activeState": {
+                  "type": "string"
+                },
+                "auto_access_device_group": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "emailSwitch": {
+                  "type": "string"
+                },
+                "hour": {
+                  "type": "string"
+                },
+                "isAllOperator": {
+                  "type": "string"
+                },
+                "is_default": {
+                  "type": "string"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "operatorCode": {
+                  "type": "string"
+                },
+                "receiveEmails": {
+                  "type": "string"
+                },
+                "relDevice": {
+                  "type": "string"
+                },
+                "relKpi": {
+                  "type": "string"
+                },
+                "reportPeriod": {
+                  "type": "string"
+                },
+                "report_cron": {
+                  "type": "string"
+                },
+                "selDeviceType": {
+                  "type": "string"
+                },
+                "tempId": {
+                  "type": "string"
+                },
+                "tempName": {
+                  "type": "string"
+                },
+                "timeZone": {
+                  "type": "string"
+                },
+                "week": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getSelDeviceGroupList.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-信息 设备选择方式：设备组数据",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "grou_pName": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/viewTemplateRelDeviceList.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-信息-设备表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "groupId": {
+                        "type": "string"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/viewTemplateRelIndicatorsList.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-信息-指标选择表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "catagoryName": {
+                        "type": "string"
+                      },
+                      "kpiId": {
+                        "type": "string"
+                      },
+                      "kpiName": {
+                        "type": "string"
+                      },
+                      "unit": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/kpitemp/goUpdCustomQueryTemplatePage.action": {
+      "get": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-修改页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/getModifyEnbListPageData.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-修改 设备表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "searchText": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "groupId": {
+                        "type": "number"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/delTemplate.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-删除",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/system/operator/getOperatorListForCombobox.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "模板表格-操作-删除 设备组列表",
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/goRegularReport.action": {
+      "get": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-定时报表",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/getRegularReportInfo.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-定时报表 详情",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mailAddress": {
+                  "type": "string"
+                },
+                "mailStatus": {
+                  "type": "string"
+                },
+                "reportPeriod": {
+                  "type": "string"
+                },
+                "reportStatus": {
+                  "type": "string"
+                },
+                "reportTime": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/updateRegularReport.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "表格-操作-定时报表 修改保存",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "tempId": {
+                "type": "string"
+              },
+              "reportStatus": {
+                "type": "string"
+              },
+              "reportPeriod": {
+                "type": "string"
+              },
+              "reportTime": {
+                "type": "string"
+              },
+              "mailAddress": {
+                "type": "string"
+              },
+              "mailStatus": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/goImportTemplatePage.action": {
+      "get": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "模板导入页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/downloadKPIQueryTemplate.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "模板导入-模板导出按钮",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/template/uploadQueryTemplate.action": {
+      "post": {
+        "tags": [
+          "查询模板"
+        ],
+        "summary": "模板导入-确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "uploadFile": {
+                "type": "string"
+              },
+              "tempName": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    }
+  }
+}

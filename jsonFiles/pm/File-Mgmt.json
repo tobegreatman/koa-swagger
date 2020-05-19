@@ -1,0 +1,202 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "文件管理",
+    "description": "文件管理 接口文档整理",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "tags": [{
+    "name": "文件管理",
+    "description": ""
+  }],
+  "paths": {
+    "/cell/perfmgmt/mrcustomize/goMRTaskPage.action": {
+      "get": {
+        "tags": [
+          "文件管理"
+        ],
+        "summary": "文件管理页面",
+        "parameters": [{
+          "name": "omcVersion",
+          "in": "query",
+          "description": "omc 版本",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "menu_id",
+          "in": "query",
+          "description": "菜单对应的 id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrreport/getCustomizeListPageData.action": {
+      "post": {
+        "tags": [
+          "文件管理"
+        ],
+        "summary": "文件管理表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "searchText": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "cellId": {
+                        "type": "string"
+                      },
+                      "creator": {
+                        "type": "string"
+                      },
+                      "end_time": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "reportPeriod": {
+                        "type": "number"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      },
+                      "startTime": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrreport/getMRFilesTreeNodes.action": {
+      "post": {
+        "tags": [
+          "文件管理"
+        ],
+        "summary": "表格-操作-下载",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "startTime": {
+                "type": "string"
+              },
+              "endTime": {
+                "type": "string"
+              },
+              "smallCellCode": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

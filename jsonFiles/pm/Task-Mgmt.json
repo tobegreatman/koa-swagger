@@ -1,0 +1,777 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "任务管理",
+    "description": "任务管理 接口文档整理",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "tags": [{
+    "name": "任务管理",
+    "description": ""
+  }],
+  "paths": {
+    "/cell/perfmgmt/mrcustomize/goMRTaskPage.action": {
+      "get": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "任务管理页面",
+        "parameters": [{
+          "name": "omcVersion",
+          "in": "query",
+          "description": "omc 版本",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "menu_id",
+          "in": "query",
+          "description": "菜单对应的 id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/getCustomizeMRTask.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "任务管理表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "taskName": {
+                "type": "string"
+              },
+              "taskStatus": {
+                "type": "string"
+              },
+              "creator": {
+                "type": "string"
+              },
+              "taskResult": {
+                "type": "string"
+              },
+              "queryStartTime": {
+                "type": "string"
+              },
+              "queryEndTime": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "create_time": {
+                        "type": "string"
+                      },
+                      "creator": {
+                        "type": "string"
+                      },
+                      "end_time": {
+                        "type": "string"
+                      },
+                      "mr_type": {
+                        "type": "number"
+                      },
+                      "operator_code": {
+                        "type": "string"
+                      },
+                      "report_period": {
+                        "type": "number"
+                      },
+                      "start_time": {
+                        "type": "string"
+                      },
+                      "statis_period": {
+                        "type": "number"
+                      },
+                      "task_id": {
+                        "type": "string"
+                      },
+                      "task_name": {
+                        "type": "string"
+                      },
+                      "task_result": {
+                        "type": "string"
+                      },
+                      "task_status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/cpeinfos/getDeviceGroupListByCell.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-信息 设备选择下拉菜单",
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "group_name": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/taskNameExist.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "新建任务-任务名称已存在",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "taskName": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/taskCellExist.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "新建任务-基站重复",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "smallCellStr": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/addMRTask.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "新建任务-确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "taskName": {
+                "type": "string"
+              },
+              "taskId": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "measurePeriod": {
+                "type": "number"
+              },
+              "reportPeriod": {
+                "type": "number"
+              },
+              "startDate": {
+                "type": "string"
+              },
+              "startTime": {
+                "type": "string"
+              },
+              "endDate": {
+                "type": "string"
+              },
+              "endTime": {
+                "type": "string"
+              },
+              "deviceGroup": {
+                "type": "string"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "ck": {
+                "type": "string"
+              },
+              "serialNumber,hostName,groupName": {
+                "type": "string"
+              },
+              "serialNumberDelStr": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "smallCellStr": {
+                "type": "string"
+              },
+              "hostNameStr": {
+                "type": "string"
+              },
+              "serialNumberStr": {
+                "type": "string"
+              },
+              "task_status": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/getMRCellPage.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-结果",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "task_id": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "failure_reason": {
+                        "type": "string"
+                      },
+                      "host_name": {
+                        "type": "number"
+                      },
+                      "progress_result": {
+                        "type": "string"
+                      },
+                      "progress_status": {
+                        "type": "string"
+                      },
+                      "run_time": {
+                        "type": "string"
+                      },
+                      "serial_number": {
+                        "type": "string"
+                      },
+                      "small_cell_code": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/activeMRTask.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-开始",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "taskId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/suspendMRTask.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-暂停",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "taskId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/terminateMRTask.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-终止",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "taskId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/template/getEnbListPageData.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-信息 设备选择表格",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "connection_status": {
+                        "type": "string"
+                      },
+                      "dual_carrier_type": {
+                        "type": "number"
+                      },
+                      "groupId": {
+                        "type": "number"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/getMRTaskproperty.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-信息 设备已选择表格",
+        "parameters": [{
+          "name": "taskId",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "connection_status": {
+                        "type": "number"
+                      },
+                      "groupName": {
+                        "type": "string"
+                      },
+                      "hostName": {
+                        "type": "string"
+                      },
+                      "serialNumber": {
+                        "type": "string"
+                      },
+                      "smallCellCode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/mrcustomize/clearMRTask.action": {
+      "post": {
+        "tags": [
+          "任务管理"
+        ],
+        "summary": "表格-操作-删除",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "taskId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

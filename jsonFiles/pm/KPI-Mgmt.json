@@ -1,0 +1,804 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "指标管理",
+    "description": "指标管理 接口文档整理",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "tags": [{
+    "name": "指标管理",
+    "description": ""
+  }],
+  "paths": {
+    "/cell/perfmgmt/kpimanage/goKpiManagementPage.action": {
+      "get": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "指标管理页面",
+        "parameters": [{
+          "name": "omcVersion",
+          "in": "query",
+          "description": "omc 版本",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "menu_id",
+          "in": "query",
+          "description": "菜单对应的 id",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorListPageData.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "点击左侧指标功能集菜单，右侧显示对应表格数据",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "catagoryId": {
+                "type": "string"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              },
+              "rows": {
+                "type": "number"
+              },
+              "queryType": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "footer": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "type": "string"
+                },
+                "rows": {
+                  "type": "array",
+                  "xml": {
+                    "name": "rows",
+                    "wrapped": true
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "calculating_status": {
+                        "type": "string"
+                      },
+                      "catagoryId": {
+                        "type": "number"
+                      },
+                      "catagoryName": {
+                        "type": "string"
+                      },
+                      "custName": {
+                        "type": "number"
+                      },
+                      "isCustomize": {
+                        "type": "string"
+                      },
+                      "kpiId": {
+                        "type": "string"
+                      },
+                      "kpiName": {
+                        "type": "string"
+                      },
+                      "unit": {
+                        "type": "string"
+                      },
+                      "updateTime": {
+                        "type": "string"
+                      },
+                      "updater": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cell/perfmgmt/kpimanage/goKPIManageWindPage.action": {
+      "get": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "新建指标页面",
+        "parameters": [{
+          "name": "code",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorGroupList.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "新建指标-指标功能集列表",
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "catagoryId": {
+                    "type": "string"
+                  },
+                  "catagoryName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorUnitList.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "新建指标 - 单位",
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/addOrModifyIndicator.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "新建指标 - 确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "kpiName": {
+                "type": "string"
+              },
+              "catagoryId": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "statisType": {
+                "type": "string"
+              },
+              "definition": {
+                "type": "string"
+              },
+              "arithmetic": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/viewKPIInfo.action": {
+      "get": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "-表格-操作-查看页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorInfo.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "表格-操作-查看页面 - 信息",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "kpiId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "arithmetic": {
+                  "type": "object",
+                  "properties": {
+                    "names": {
+                      "type": "array",
+                      "xml": {
+                        "name": "names",
+                        "wrapped": true
+                      },
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "keys": {
+                      "type": "array",
+                      "xml": {
+                        "name": "names",
+                        "wrapped": true
+                      },
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "values": {
+                      "type": "array",
+                      "xml": {
+                        "name": "names",
+                        "wrapped": true
+                      },
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "catagoryId": {
+                  "type": "string"
+                },
+                "catagoryName": {
+                  "type": "string"
+                },
+                "custName": {
+                  "type": "string"
+                },
+                "definition": {
+                  "type": "string"
+                },
+                "generalBegin": {
+                  "type": "string"
+                },
+                "generalColor": {
+                  "type": "string"
+                },
+                "generalEnd": {
+                  "type": "string"
+                },
+                "generalTimeLevel": {
+                  "type": "string"
+                },
+                "kpiId": {
+                  "type": "string"
+                },
+                "kpiName": {
+                  "type": "string"
+                },
+                "seriousBegin": {
+                  "type": "string"
+                },
+                "seriousColor": {
+                  "type": "string"
+                },
+                "seriousEnd": {
+                  "type": "string"
+                },
+                "seriousTimeLevel": {
+                  "type": "string"
+                },
+                "statisType": {
+                  "type": "string"
+                },
+                "unit": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/indicatormg/viewKPIInfo.action": {
+      "get": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "表格-操作-修改页面",
+        "parameters": [{
+          "name": "isBasic",
+          "in": "query",
+          "required": true,
+          "type": "boolean"
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/goModifyKPIPage.action": {
+      "get": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "表格-操作-修改指标页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/indicatormg/addOrModifyIndicator.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "表格-操作-修改 - 确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "kpiId": {
+                "type": "string"
+              },
+              "kpiName": {
+                "type": "string"
+              },
+              "catagoryId": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "statisType": {
+                "type": "string"
+              },
+              "definition": {
+                "type": "string"
+              },
+              "arithmetic": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/delIndicator.action": {
+      "post": {
+        "tags": [
+          "指标管理"
+        ],
+        "summary": "表格-操作- 删除",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "kpiId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorGroupTree.action": {
+      "post": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "指标功能集列表",
+        "parameters": [{
+          "name": "noKpiShowGroup",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "noKpiShowGroup": {
+                "type": "number"
+              },
+              "searchText": {
+                "type": "string"
+              },
+              "timeZone": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "checked": {
+                    "type": "string"
+                  },
+                  "children": {
+                    "type": "array",
+                    "xml": {
+                      "name": "children",
+                      "wrapped": true
+                    },
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "attributes": {
+                          "type": "object",
+                          "properties": {
+                            "isCustomize": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "children": {
+                          "type": "array",
+                          "xml": {
+                            "name": "children",
+                            "wrapped": true
+                          },
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "iconCls": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "iconCls": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/goAddIndicatorGroupPage.action": {
+      "post": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "指标功能集-新建页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/addIndicatorGroup.action": {
+      "post": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "新建指标功能集 - 确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "catagoryName": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/getIndicatorGroupInfo.action": {
+      "post": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "修改指标功能集 - 信息",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "timeZone": {
+                "type": "string"
+              },
+              "catagoryId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "catagoryName": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/goModifyGroupPage.action": {
+      "get": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "修改指标功能集页面",
+        "responses": {
+          "200": {
+            "description": "响应成功"
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/modifyIndicatorGroup.action": {
+      "post": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "修改指标功能集 - 确定",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "catagoryId": {
+                "type": "string"
+              },
+              "catagoryName": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pm/indicatormg/delIndicatorGroup.action": {
+      "post": {
+        "tags": [
+          "指标功能集"
+        ],
+        "summary": "指标功能集 - 删除",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "参数",
+          "required": true,
+          "schema": {
+            "properties": {
+              "catagoryId": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "响应成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
