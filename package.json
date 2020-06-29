@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start app.js --name=swagger",
-    "build": "node merger.js"
+    "start": "pm2 start app.js --name=swagger && npm run docs",
+    "build": "node merger.js",
+    "docs": "docsify serve ./docs"
   },
   "keywords": [],
   "author": "",
