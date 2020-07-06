@@ -1,5 +1,7 @@
 ### Vue版 -  `el-pairgrid` :
 
+<img src="./images/el-pairgrid.png"/>
+
 *样例* :  
 
     <el-pairgrid :query-name="queryName" :height="height" :right-url="url" :left-url="url" row-key="name" :query-params="params">
@@ -53,4 +55,4 @@
 | 方法名     | 参数     | 描述     |
 | :------------- | :------------- | :------------- |
 | reload	| event	| 刷新左表数据（url一般加载方式）|
-| getData	| 	| 获取已选数据| 
+| getData	| 	| 获取已选数据|

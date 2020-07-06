@@ -1,6 +1,6 @@
 ### 菜单组件 - `cmenu` :
 
-    img
+<img src="./images/cmenu.png"/>
 
 *样例* :  
 

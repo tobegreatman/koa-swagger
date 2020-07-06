@@ -1,6 +1,7 @@
 ### 下拉表格组件 - `gridbox`:  
 
     如果没有任何自定义化的设置，下拉表默认只有一列Name（属性：name），数据单元的属性默认也是要求有name。
+<img src="./images/gridbox.png"/>
 
 *样例* :  
 

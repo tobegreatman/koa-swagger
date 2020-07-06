@@ -2,6 +2,7 @@
 ### 双表选择组件 - `pairgrid`:  
 
     要求右表的列须是左表的列的子集，且应设置idField并皆包含该属性
+<img src="./images/paigrid.png"/>
 
 *样例* :  
 

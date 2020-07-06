@@ -1,11 +1,14 @@
 - 关于
  - [SVN](zh-cn/about)
- 
+
 - 表格类
  - [pairgrid](zh-cn/pairgrid)
  - [el-pairgrid](zh-cn/el-pairgrid)
  - [gridbox](zh-cn/gridbox)
  - [el-ctable](zh-cn/el-ctable)
+
+- 树
+  - [el-ctree](zh-cn/el-ctree)
 
 - 菜单
   - [cmenu](zh-cn/cmenu)
