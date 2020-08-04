@@ -13,6 +13,9 @@
 - 菜单
   - [cmenu](zh-cn/cmenu)
 
+- 菜单
+  - [el-bulk](zh-cn/el-bulk)
+
 - 查询
   - [query](zh-cn/query)
   - [el-query](zh-cn/el-query)
