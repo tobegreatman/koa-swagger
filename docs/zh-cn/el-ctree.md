@@ -14,6 +14,10 @@
         {key: 'wform', label: 'Writable', prop: 'write'},
         {key: 'aform', label: 'Action', prop: 'active'}
       ]",
+      :checked="{
+        rform: ['38'],
+        wform: ['1']
+      }"
       :ignore="{
         rform: ['1'],
         wform: ['38']
@@ -41,7 +45,8 @@
 | data	 | array | 树结构数据 |
 | readonly	| boolean | 是否只读模式	 | false |
 | cascade | array | 联动关系配置  | [] |
-| check-forms	| array | checkbox组配置：<br><pre>key: checkbox组的form键值<br>lable: checkbox组的显示名<br>prop: checkbox对应树数据的属性</pre>	 | [] |
+| check-forms	| array | checkbox组配置：<br><pre>key: checkbox组的form键值<br>lable: checkbox组的显示名<br>prop: checkbox对应树数据的属性,也是默认勾选的关键属性</pre>	 | [] |
+| checked | object | 设置默认勾选的节点，根据checkbox组的form键值设置对应关系  |  |
 | ignore | object | 设置不渲染的节点，根据checkbox组的form键值设置对应关系  |  |
 
 *方法* :  
